@@ -74,6 +74,9 @@ class _ListTarefasState extends State<ListTarefas> {
               Text(tarefas[index].data),
             ],
           ),
+          onLongPress: (){
+            deleteTarefa(index);
+          },
         ),
       ),
     );
