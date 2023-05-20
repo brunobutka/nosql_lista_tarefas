@@ -7,6 +7,7 @@ class AddTarefa extends StatelessWidget {
 
   final TextEditingController _disciplinaController = TextEditingController();
   final TextEditingController _nomeController = TextEditingController();
+  final TextEditingController _dataController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +48,19 @@ class AddTarefa extends StatelessWidget {
                   return null;
                 },
               ),
+              TextFormField(
+                controller: _dataController,
+                decoration: const InputDecoration(
+                    hintText: "Data de Entrega",
+                    labelText: "Data de Entrega",
+                ),
+                validator: (value) {
+                  if (value?.isEmpty ?? true) {
+                    return 'Insira a data de entrega';
+                  }
+                  return null;
+                },
+              ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                 child: ElevatedButton(
@@ -54,7 +68,8 @@ class AddTarefa extends StatelessWidget {
                     if (_formKey.currentState?.validate() ?? false) {
                       Tarefa tarefa = Tarefa(
                           nome: _nomeController.text,
-                          disciplina: _disciplinaController.text
+                          disciplina: _disciplinaController.text,
+                          data: _dataController.text
                       );
                       Navigator.pop(context, tarefa);
                     }

@@ -67,10 +67,13 @@ class _ListTarefasState extends State<ListTarefas> {
         child: ListTile(
           leading: Text("${tarefas[index].id}"),
           title: Text(tarefas[index].disciplina),
-          subtitle: Text(tarefas[index].nome),
-          onLongPress: (){
-            deleteTarefa(index);
-          },
+          subtitle: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(tarefas[index].nome),
+              Text(tarefas[index].data),
+            ],
+          ),
         ),
       ),
     );
