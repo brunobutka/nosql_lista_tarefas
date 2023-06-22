@@ -8,7 +8,6 @@ import 'package:nosql_lista_tarefas/main.dart';
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
-  group('MyApp', () {
     testWidgets('Navigate to ListTarefas screen', (WidgetTester tester) async {
       app.main();
       await tester.pumpAndSettle();
@@ -23,5 +22,4 @@ void main() {
       // Verify that the ListTarefas screen is displayed.
       expect(find.byType(ListTarefas), findsOneWidget);
     });
-  });
 }
