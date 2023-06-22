@@ -23,7 +23,7 @@ void main() {
     await tester.tap(find.byType(ListTile));
     await tester.pumpAndSettle();
 
-    // Verify that the ListTarefas screen is displayed. aa
+    // Verify that the ListTarefas screen is displayed.
     expect(find.byType(ListTarefas), findsOneWidget);
   });
 
