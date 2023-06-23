@@ -33,6 +33,7 @@ class _ListTarefasState extends State<ListTarefas> {
           if (database != null)
             IconButton(
             icon: const Icon(Icons.add),
+            key: Key("addButton"),
             onPressed: (){
               Future<dynamic> future = Navigator.push(
                   context,
@@ -67,7 +68,13 @@ class _ListTarefasState extends State<ListTarefas> {
         child: ListTile(
           leading: Text("${tarefas[index].id}"),
           title: Text(tarefas[index].disciplina),
-          subtitle: Text(tarefas[index].nome),
+          subtitle: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(tarefas[index].nome),
+              Text(tarefas[index].data),
+            ],
+          ),
           onLongPress: (){
             deleteTarefa(index);
           },

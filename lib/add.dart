@@ -7,6 +7,7 @@ class AddTarefa extends StatelessWidget {
 
   final TextEditingController _disciplinaController = TextEditingController();
   final TextEditingController _nomeController = TextEditingController();
+  final TextEditingController _dataController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +28,7 @@ class AddTarefa extends StatelessWidget {
                     labelText: "Disciplina"
                 ),
                 controller: _disciplinaController,
+                key: Key("disciplinaField"),
                 validator: (value) {
                   if (value?.isEmpty ?? true) {
                     return 'Insira a disciplina';
@@ -36,6 +38,7 @@ class AddTarefa extends StatelessWidget {
               ),
               TextFormField(
                 controller: _nomeController,
+                key: Key("nomeField"),
                 decoration: const InputDecoration(
                     hintText: "Nome da Tarefa",
                     labelText: "Nome da Tarefa"
@@ -47,14 +50,30 @@ class AddTarefa extends StatelessWidget {
                   return null;
                 },
               ),
+              TextFormField(
+                controller: _dataController,
+                key: Key("dataField"),
+                decoration: const InputDecoration(
+                    hintText: "Data de Entrega",
+                    labelText: "Data de Entrega",
+                ),
+                validator: (value) {
+                  if (value?.isEmpty ?? true) {
+                    return 'Insira a data de entrega';
+                  }
+                  return null;
+                },
+              ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                 child: ElevatedButton(
+                  key: Key("saveButton"),
                   onPressed: () {
                     if (_formKey.currentState?.validate() ?? false) {
                       Tarefa tarefa = Tarefa(
                           nome: _nomeController.text,
-                          disciplina: _disciplinaController.text
+                          disciplina: _disciplinaController.text,
+                          data: _dataController.text
                       );
                       Navigator.pop(context, tarefa);
                     }

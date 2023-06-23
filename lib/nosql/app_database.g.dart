@@ -69,7 +69,7 @@ class _$AppDatabase extends AppDatabase {
     Callback? callback,
   ]) async {
     final databaseOptions = sqflite.OpenDatabaseOptions(
-      version: 1,
+      version: 2,
       onConfigure: (database) async {
         await database.execute('PRAGMA foreign_keys = ON');
         await callback?.onConfigure?.call(database);
@@ -85,7 +85,7 @@ class _$AppDatabase extends AppDatabase {
       },
       onCreate: (database, version) async {
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `Tarefa` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `disciplina` TEXT NOT NULL, `nome` TEXT NOT NULL)');
+            'CREATE TABLE IF NOT EXISTS `Tarefa` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `disciplina` TEXT NOT NULL, `nome` TEXT NOT NULL, `data` TEXT NOT NULL)');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -110,7 +110,8 @@ class _$TarefaDao extends TarefaDao {
             (Tarefa item) => <String, Object?>{
                   'id': item.id,
                   'disciplina': item.disciplina,
-                  'nome': item.nome
+                  'nome': item.nome,
+                  'data': item.data
                 },
             changeListener),
         _tarefaDeletionAdapter = DeletionAdapter(
@@ -120,7 +121,8 @@ class _$TarefaDao extends TarefaDao {
             (Tarefa item) => <String, Object?>{
                   'id': item.id,
                   'disciplina': item.disciplina,
-                  'nome': item.nome
+                  'nome': item.nome,
+                  'data': item.data
                 },
             changeListener);
 
@@ -140,7 +142,8 @@ class _$TarefaDao extends TarefaDao {
         mapper: (Map<String, Object?> row) => Tarefa(
             id: row['id'] as int?,
             disciplina: row['disciplina'] as String,
-            nome: row['nome'] as String));
+            nome: row['nome'] as String,
+            data: row['data'] as String));
   }
 
   @override
@@ -149,7 +152,8 @@ class _$TarefaDao extends TarefaDao {
         mapper: (Map<String, Object?> row) => Tarefa(
             id: row['id'] as int?,
             disciplina: row['disciplina'] as String,
-            nome: row['nome'] as String),
+            nome: row['nome'] as String,
+            data: row['data'] as String),
         arguments: [id],
         queryableName: 'Tarefa',
         isView: false);
