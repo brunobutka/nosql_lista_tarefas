@@ -33,10 +33,7 @@ class _ListTarefasState extends State<ListTarefas> {
           if (database != null)
             IconButton(
             icon: const Icon(Icons.add),
-<<<<<<< HEAD
-=======
             key: Key("addButton"),
->>>>>>> IntegrationTest2
             onPressed: (){
               Future<dynamic> future = Navigator.push(
                   context,
