@@ -28,6 +28,10 @@ class AddTarefa extends StatelessWidget {
                     labelText: "Disciplina"
                 ),
                 controller: _disciplinaController,
+<<<<<<< HEAD
+=======
+                key: Key("disciplinaField"),
+>>>>>>> IntegrationTest2
                 validator: (value) {
                   if (value?.isEmpty ?? true) {
                     return 'Insira a disciplina';
@@ -37,6 +41,10 @@ class AddTarefa extends StatelessWidget {
               ),
               TextFormField(
                 controller: _nomeController,
+<<<<<<< HEAD
+=======
+                key: Key("nomeField"),
+>>>>>>> IntegrationTest2
                 decoration: const InputDecoration(
                     hintText: "Nome da Tarefa",
                     labelText: "Nome da Tarefa"
@@ -50,6 +58,10 @@ class AddTarefa extends StatelessWidget {
               ),
               TextFormField(
                 controller: _dataController,
+<<<<<<< HEAD
+=======
+                key: Key("dataField"),
+>>>>>>> IntegrationTest2
                 decoration: const InputDecoration(
                     hintText: "Data de Entrega",
                     labelText: "Data de Entrega",
@@ -64,6 +76,10 @@ class AddTarefa extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                 child: ElevatedButton(
+<<<<<<< HEAD
+=======
+                  key: Key("saveButton"),
+>>>>>>> IntegrationTest2
                   onPressed: () {
                     if (_formKey.currentState?.validate() ?? false) {
                       Tarefa tarefa = Tarefa(
