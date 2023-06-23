@@ -7,25 +7,24 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:nosql_lista_tarefas/add.dart';
 
 import 'package:nosql_lista_tarefas/main.dart';
 import 'package:nosql_lista_tarefas/list_tarefas.dart';
 
 void main() {
-  testWidgets('Navigate to ListTarefas screen', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
+  testWidgets('Navega para a tela ListTarefas', (WidgetTester tester) async {
+    // Da build no APP.
     await tester.pumpWidget(MyApp());
 
-    // Verify that the Home screen is displayed.
+    // Verifica se a tela Home é exibida
     expect(find.byType(Home), findsOneWidget);
 
-    // Tap on the ListTile.
+    // Clica no ListTile.
     await tester.tap(find.byType(ListTile));
     await tester.pumpAndSettle();
 
-    // Verify that the ListTarefas screen is displayed.
+    // Verifica se a tela ListTarefas é exibida.
     expect(find.byType(ListTarefas), findsOneWidget);
   });
-
-
 }
